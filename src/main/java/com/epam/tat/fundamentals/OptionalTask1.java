@@ -1,4 +1,4 @@
-package main.task;
+package com.epam.tat.fundamentals;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,9 +9,9 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class OTask1 {
-
-	static boolean isAllNumEven(String str) {
+public class OptionalTask1 {
+	
+	public static boolean isAllNumbersEven(String str) {
 		for (int i = 0; i < str.length(); i++) {
 			char c = str.charAt(i);
 			if (!((int) c % 2 == 0)) {
@@ -21,7 +21,7 @@ public class OTask1 {
 		return true;
 	}
 
-	static boolean isRize(String str) {
+	public static boolean isSequenceIncreasing(String str) {
 		if (str.length() == 1)
 			return true;
 		for (int i = 1; i < str.length(); i++) {
@@ -33,23 +33,23 @@ public class OTask1 {
 		return true;
 	}
 
-	static boolean isNumEvenAndNotEven(String str) {
-		int e = 0, n = 0;
+	public static boolean isNumberContainsEqualAmountOfEvenAndNotEvenNumerals(String str) {
+		int even = 0, notEven = 0;
 		for (int i = 0; i < str.length(); i++) {
 			char c = str.charAt(i);
 			if ((int) c % 2 == 0) {
-				e++;
+				even++;
 			} else {
-				n++;
+				notEven++;
 			}
 		}
-		if (n == e)
+		if (notEven == even)
 			return true;
 		else
 			return false;
 	}
 
-	static String numMinDiff(String[] s) {
+	public static String numMinDiff(String[] s) {
 		int minCount = 1000;
 		String res = "";
 		for (int i = 0; i < s.length; i++) {
@@ -70,7 +70,7 @@ public class OTask1 {
 
 	}
 
-	static int length(int a) {
+	public static int lengthOfNumber(int a) {
 		int l = 0;
 		while (a != 0) {
 			a /= 10;
@@ -79,7 +79,7 @@ public class OTask1 {
 		return l;
 	}
 
-	static String numMaxDiff(String[] s) {
+	public static String numMaxDiff(String[] s) {
 		String res = "";
 		for (int i = 0; i < s.length; i++) {
 			char[] c = s[i].toCharArray();
@@ -112,8 +112,8 @@ public class OTask1 {
 		Arrays.sort(iarr);
 		Arrays.sort(arr);
 		System.out.println("task 1");
-		System.out.println(iarr[0] + " " + length(iarr[0]));
-		System.out.println(iarr[n - 1] + " " + length(iarr[n - 1]));
+		System.out.println(iarr[0] + " " + lengthOfNumber(iarr[0]));
+		System.out.println(iarr[n - 1] + " " + lengthOfNumber(iarr[n - 1]));
 		System.out.println("task 2");
 		int mid = 0;
 		for (int i = 0; i < n; i++) {
@@ -134,19 +134,19 @@ public class OTask1 {
 		System.out.println("task 5");
 		int count = 0;
 		for (int i = 0; i < n; i++) {
-			if (isAllNumEven(arr[i]))
+			if (isAllNumbersEven(arr[i]))
 				count++;
 		}
 		System.out.println(count);
 		count = 0;
 		for (int i = 0; i < n; i++) {
-			if (isNumEvenAndNotEven(arr[i]))
+			if (isNumberContainsEqualAmountOfEvenAndNotEvenNumerals(arr[i]))
 				count++;
 		}
 		System.out.println(count);
 		System.out.println("task 6");
 		for (int i = 0; i < n; i++) {
-			if (isRize(arr[i])) {
+			if (isSequenceIncreasing(arr[i])) {
 				System.out.println(arr[i]);
 				break;
 			}
