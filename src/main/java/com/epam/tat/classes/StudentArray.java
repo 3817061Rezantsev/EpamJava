@@ -15,27 +15,27 @@ public class StudentArray {
 		this.students = student;
 	}
 
-	public Student[] getByFaculty(String faculty) {
-		List<Student> list = new ArrayList<>();
+	public List<Student> getByFaculty(String faculty) {
+		List<Student> facultyStudents = new ArrayList<>();
 		for (Student student : students) {
 			if (student.getFaculty().equals(faculty)) {
-				list.add(student);
+				facultyStudents.add(student);
 			}
 		}
-		return (Student[]) list.toArray();
+		return facultyStudents;
 	}
 
-	public Student[] getByGroup(String group) {
-		List<Student> list = new ArrayList<>();
+	public List<Student> getByGroup(String group) {
+		List<Student> groupStudent = new ArrayList<>();
 		for (Student student : students) {
 			if (student.getGroup().equals(group)) {
-				list.add(student);
+				groupStudent.add(student);
 			}
 		}
-		return (Student[]) list.toArray();
+		return groupStudent;
 	}
 
-	public void sortByFacultyAndGroup() {
+	public void sortByFacultyAndCourse() {
 		for (int i = 0; i < students.length; i++) {
 			for (int j = 0; j < students.length - 1; j++) {
 				if (students[j].getFaculty().compareTo(students[j + 1].getFaculty()) > 0) {
@@ -48,7 +48,7 @@ public class StudentArray {
 		for (int i = 0; i < students.length; i++) {
 			for (int j = 0; j < students.length - 1; j++) {
 				if (students[j].getFaculty().compareTo(students[j + 1].getFaculty()) == 0) {
-					if (students[j].getGroup().compareTo(students[j + 1].getGroup()) > 0) {
+					if (students[j].getCourse().compareTo(students[j + 1].getCourse()) > 0) {
 						Student s = students[j];
 						students[j] = students[j + 1];
 						students[j + 1] = s;
@@ -61,18 +61,18 @@ public class StudentArray {
 	}
 
 	public Student[] getForEachFacultyAndGroup() {
-		sortByFacultyAndGroup();
+		sortByFacultyAndCourse();
 		return students;
 	}
 
-	public Student[] getByBDay(Date date) {
-		List<Student> list = new ArrayList<>();
+	public List<Student> getYoungerStudents(Date date) {
+		List<Student> youngerStudents = new ArrayList<>();
 		for (Student student : students) {
 			if (student.getBirthday().after(date)) {
-				list.add(student);
+				youngerStudents.add(student);
 			}
 		}
-		return (Student[]) list.toArray();
+		return youngerStudents;
 	}
 
 	public StudentArray(StudentArray studentArray) {

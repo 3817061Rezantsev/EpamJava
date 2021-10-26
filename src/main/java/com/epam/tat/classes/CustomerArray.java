@@ -19,6 +19,7 @@ public class CustomerArray {
 		this.customers = A.getCustomers();
 	}
 
+	// Array of customers in alphabetical order: Last Name, First Name, Second Name
 	public Customer[] alphabetSort() {
 		for (int i = 0; i < customers.length; i++) {
 			for (int j = 0; j < customers.length - 1; j++) {
@@ -61,7 +62,7 @@ public class CustomerArray {
 
 	}
 
-	public Customer[] getByCreditCards(BigInteger a, BigInteger b) {
+	public List<Customer> getByCreditCards(BigInteger a, BigInteger b) {
 		List<Customer> list = new ArrayList<>();
 		for (Customer c : customers) {
 			if (c.getCreditCard().compareTo(a) >= 0) {
@@ -70,7 +71,7 @@ public class CustomerArray {
 				}
 			}
 		}
-		return (Customer[]) list.toArray();
+		return list;
 	}
 
 	public Customer[] getCustomers() {

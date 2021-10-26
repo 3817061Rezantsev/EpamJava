@@ -9,12 +9,16 @@ import com.epam.tat.collections.models.FreshnessLevel;
 public class Bouquet {
 	private List<? extends Flower> flowers;
 
-	public Bouquet(List<? extends Flower> flowers) {
+	private Accessory accessory;
+
+	public Bouquet(List<? extends Flower> flowers, Accessory accessory) {
 		this.flowers = flowers;
+		this.accessory = accessory;
 	}
 
 	public Bouquet(Bouquet bouquet) {
 		this.flowers = bouquet.getFlowers();
+		this.accessory = bouquet.getAccessory();
 	}
 
 	public double getBouquetCost() {
@@ -22,7 +26,7 @@ public class Bouquet {
 		for (Flower flower : flowers) {
 			cost += flower.getCost();
 		}
-		return cost;
+		return cost + accessory.getCost();
 	}
 
 	public List<Flower> getSortedByFreshness() {
@@ -61,6 +65,14 @@ public class Bouquet {
 
 	public void setFlowers(List<? extends Flower> flowers) {
 		this.flowers = flowers;
+	}
+
+	public Accessory getAccessory() {
+		return accessory;
+	}
+
+	public void setAccessory(Accessory accessory) {
+		this.accessory = accessory;
 	}
 
 }

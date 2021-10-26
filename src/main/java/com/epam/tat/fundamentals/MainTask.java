@@ -21,15 +21,16 @@ public class MainTask {
 	public static void randomNumbers(int numberOfRandomNum) {
 		for (int i = 0; i < numberOfRandomNum; i++) {
 			int b = (int) (Math.random() * 20);
-			System.out.print(b);
+			System.out.print(b + " ");
 		}
+		System.out.println();
 		for (int i = 0; i < numberOfRandomNum; i++) {
 			int b = (int) (Math.random() * 20);
 			System.out.println(b);
 		}
 	}
 
-	public static void sumAndMulOfConsolNumbers() throws NumberFormatException, IOException {
+	public static void sumAndMulOfConsoleNumbers() throws NumberFormatException, IOException {
 		InputStream inputStream = System.in;
 		Reader inputStreamReader = new InputStreamReader(inputStream);
 		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -65,7 +66,7 @@ public class MainTask {
 		int numberOfRandomNum = Integer.parseInt(bufferedReader.readLine());
 		randomNumbers(numberOfRandomNum);
 		System.out.println("Enter numbers for sum and mul");
-		sumAndMulOfConsolNumbers();
+		sumAndMulOfConsoleNumbers();
 		System.out.println("Enter month number");
 		int monthNum = Integer.parseInt(bufferedReader.readLine());
 		monthNameOutput(monthNum);

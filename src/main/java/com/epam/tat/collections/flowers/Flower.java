@@ -4,9 +4,9 @@ import com.epam.tat.collections.models.FreshnessLevel;
 
 public class Flower {
 
-	private double stemLength;
-	private double cost;
-	private FreshnessLevel level;
+	protected double stemLength;
+	protected double cost;
+	protected FreshnessLevel level;
 
 	public Flower() {
 		stemLength = 0;

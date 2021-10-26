@@ -22,6 +22,10 @@ public class Rose extends Flower {
 		this.kind = rose.getKind();
 	}
 
+	public String toString() {
+		return "Rose " + level;
+	}
+
 	public RoseKinds getKind() {
 		return kind;
 	}

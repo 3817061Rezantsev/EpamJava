@@ -25,6 +25,10 @@ public class Sunflower extends Flower {
 		this.seedsCount = sunflower.getSeedsCount();
 	}
 
+	public String toString() {
+		return "Sunflower " + level;
+	}
+
 	public double getFlowerRadius() {
 		return flowerRadius;
 	}
