@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -49,7 +50,8 @@ public class OptionalTask2 {
 			}
 		}
 
-		int i1 = 0, j1 = 0;
+		int newMatrixRow = 0;
+		int newMatrixColumn = 0;
 		int[][] newMatrix = new int[n - iset.size()][n - jset.size()];
 		for (int i = 0; i < n; i++) {
 			if (!iset.add(i)) {
@@ -60,12 +62,12 @@ public class OptionalTask2 {
 				if (!set.add(j)) {
 					continue;
 				}
-				newMatrix[i1][j1] = matrix[i][j];
-				j1++;
+				newMatrix[newMatrixRow][newMatrixColumn] = matrix[i][j];
+				newMatrixColumn++;
 
 			}
-			j1 = 0;
-			i1++;
+			newMatrixColumn = 0;
+			newMatrixRow++;
 		}
 		return newMatrix;
 	}
@@ -77,7 +79,8 @@ public class OptionalTask2 {
 				matrixInARow[i * matrix.length + j] = matrix[i][j];
 			}
 		}
-		int count = 1, max = 1;
+		int count = 1;
+		int max = 1;
 		for (int i = 0; i < matrixInARow.length - 1; i++) {
 			if (matrixInARow[i] <= matrixInARow[i + 1]) {
 				count++;
@@ -105,17 +108,18 @@ public class OptionalTask2 {
 		Reader inputStreamReader = new InputStreamReader(inputStream);
 		BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 		System.out.println("Enter from the console n - the dimension of the matrix");
-		int n = Integer.parseInt(bufferedReader.readLine());
+		int matrixSize = Integer.parseInt(bufferedReader.readLine());
 		System.out.println("Enter number M for generating random numbers on the interval [-M, M]");
-		int M = Integer.parseInt(bufferedReader.readLine());
+		int maxValue = Integer.parseInt(bufferedReader.readLine());
+		Random random = new Random();
 		System.out.println("Matrix a[n][n]");
-		int[][] a = new int[n][n];
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				a[i][j] = (int) (Math.random() * 2 * M - M);
+		int[][] matrix = new int[matrixSize][matrixSize];
+		for (int i = 0; i < matrixSize; i++) {
+			for (int j = 0; j < matrixSize; j++) {
+				matrix[i][j] = random.nextInt() * 2 * maxValue - maxValue;
 			}
 		}
-		printMatrix(a);
+		printMatrix(matrix);
 		System.out.println("Ñhoose action:");
 		System.out.println(
 				"1 - Sort the rows of the matrix in ascending order of the values of the elements of the k-th column.");
@@ -131,33 +135,33 @@ public class OptionalTask2 {
 			switch (c) {
 			case 1:
 				int k = Integer.parseInt(bufferedReader.readLine());
-				for (int i = 0; i < n; i++) {
-					for (int j = 0; j < n - 1; j++) {
-						if (a[j][k] > a[j + 1][k]) {
-							int[] temp = a[j];
-							a[j] = a[j + 1];
-							a[j + 1] = temp;
+				for (int i = 0; i < matrixSize; i++) {
+					for (int j = 0; j < matrixSize - 1; j++) {
+						if (matrix[j][k] > matrix[j + 1][k]) {
+							int[] temp = matrix[j];
+							matrix[j] = matrix[j + 1];
+							matrix[j + 1] = temp;
 						}
 					}
 				}
 				System.out.println("New matrix a[n][n]");
-				printMatrix(a);
+				printMatrix(matrix);
 				break;
 			case 2:
 				System.out.println("The largest number of increasing matrix elements in a row: "
-						+ largestNumberOfIncreasingMatrixElementsInARow(a));
+						+ largestNumberOfIncreasingMatrixElementsInARow(matrix));
 				break;
 			case 3:
 				int sum = 0;
-				for (int i = 0; i < n; i++) {
-					sum += findSumOfNumbersBetweentwoPositiveNumbers(a[i]);
+				for (int i = 0; i < matrixSize; i++) {
+					sum += findSumOfNumbersBetweentwoPositiveNumbers(matrix[i]);
 				}
 				System.out.println(
 						"Sum of the matrix elements located between the first and second positive elements of each row: "
 								+ sum);
 				break;
 			case 4:
-				int[][] d = findMaxElementInMatrixAndRemoveAllRowsAndColumnsFromMatrixThatContainIt(a, M);
+				int[][] d = findMaxElementInMatrixAndRemoveAllRowsAndColumnsFromMatrixThatContainIt(matrix, maxValue);
 				System.out.println("New matrix a[n][n]");
 				printMatrix(d);
 				break;

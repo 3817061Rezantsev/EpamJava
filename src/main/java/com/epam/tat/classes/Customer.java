@@ -25,14 +25,14 @@ public class Customer {
 		this.bankAccount = bankAccount;
 	}
 
-	public Customer(Customer A) {
-		this.id = A.getId();
-		this.firstName = A.getFirstName();
-		this.secondName = A.getSecondName();
-		this.lastName = A.getLastName();
-		this.adress = A.getAdress();
-		this.creditCard = A.getCreditCard();
-		this.bankAccount = A.getBankAccount();
+	public Customer(Customer customer) {
+		this.id = customer.getId();
+		this.firstName = customer.getFirstName();
+		this.secondName = customer.getSecondName();
+		this.lastName = customer.getLastName();
+		this.adress = customer.getAdress();
+		this.creditCard = customer.getCreditCard();
+		this.bankAccount = customer.getBankAccount();
 	}
 
 	public String getId() {

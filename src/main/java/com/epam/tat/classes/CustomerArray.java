@@ -15,8 +15,8 @@ public class CustomerArray {
 		this.customers = customers;
 	}
 
-	public CustomerArray(CustomerArray A) {
-		this.customers = A.getCustomers();
+	public CustomerArray(CustomerArray customerArray) {
+		this.customers = customerArray.getCustomers();
 	}
 
 	// Array of customers in alphabetical order: Last Name, First Name, Second Name
@@ -54,8 +54,7 @@ public class CustomerArray {
 						}
 					}
 
-				} else
-					continue;
+				}
 			}
 		}
 		return customers;

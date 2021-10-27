@@ -14,7 +14,7 @@ public class OptionalTask1 {
 	public static boolean isAllNumbersEven(String number) {
 		for (int i = 0; i < number.length(); i++) {
 			char c = number.charAt(i);
-			if (!((int) c % 2 == 0)) {
+			if ((int) c % 2 != 0) {
 				return false;
 			}
 		}
@@ -33,7 +33,8 @@ public class OptionalTask1 {
 	}
 
 	public static boolean isNumberContainsEqualAmountOfEvenAndNotEvenNumerals(String number) {
-		int even = 0, notEven = 0;
+		int even = 0;
+		int notEven = 0;
 		for (int i = 0; i < number.length(); i++) {
 			char c = number.charAt(i);
 			if ((int) c % 2 == 0) {
@@ -42,10 +43,7 @@ public class OptionalTask1 {
 				notEven++;
 			}
 		}
-		if (notEven == even)
-			return true;
-		else
-			return false;
+		return notEven == even;
 	}
 
 	public static String fewDistinctDigits(String[] array) {
@@ -69,29 +67,29 @@ public class OptionalTask1 {
 
 	}
 
-	public static int lengthOfNumber(int a) {
-		int l = 0;
-		while (a != 0) {
-			a /= 10;
-			l++;
+	public static int lengthOfNumber(int number) {
+		int length = 0;
+		while (number != 0) {
+			number /= 10;
+			length++;
 		}
-		return l;
+		return length;
 	}
 
-	public static String onlyDistinctDigits(String[] s) {
-		String res = "";
-		for (int i = 0; i < s.length; i++) {
-			char[] c = s[i].toCharArray();
+	public static String onlyDistinctDigits(String[] numbers) {
+		String onlyDistinct = "";
+		for (int i = 0; i < numbers.length; i++) {
+			char[] c = numbers[i].toCharArray();
 			Set<Integer> set = new TreeSet<>();
-			for (int j = 0; j < s[i].length(); j++) {
+			for (int j = 0; j < numbers[i].length(); j++) {
 				set.add((int) c[j]);
 			}
-			if (set.size() == s[i].length()) {
-				res = s[i];
+			if (set.size() == numbers[i].length()) {
+				onlyDistinct = numbers[i];
 				break;
 			}
 		}
-		return res;
+		return onlyDistinct;
 
 	}
 
@@ -156,7 +154,8 @@ public class OptionalTask1 {
 				System.out.println();
 				break;
 			case 4:
-				System.out.println("A number with as few distinct digits as possible: " + fewDistinctDigits(arrayOfNumbers));
+				System.out.println(
+						"A number with as few distinct digits as possible: " + fewDistinctDigits(arrayOfNumbers));
 				break;
 			case 5:
 				int count = 0;
