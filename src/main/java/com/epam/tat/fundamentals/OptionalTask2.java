@@ -116,7 +116,7 @@ public class OptionalTask2 {
 		int[][] matrix = new int[matrixSize][matrixSize];
 		for (int i = 0; i < matrixSize; i++) {
 			for (int j = 0; j < matrixSize; j++) {
-				matrix[i][j] = random.nextInt() * 2 * maxValue - maxValue;
+				matrix[i][j] = random.nextInt(2 * maxValue + 1) - maxValue;
 			}
 		}
 		printMatrix(matrix);
@@ -134,6 +134,7 @@ public class OptionalTask2 {
 			int c = Integer.parseInt(bufferedReader.readLine());
 			switch (c) {
 			case 1:
+				System.out.println("Ñhoose column:");
 				int k = Integer.parseInt(bufferedReader.readLine());
 				for (int i = 0; i < matrixSize; i++) {
 					for (int j = 0; j < matrixSize - 1; j++) {

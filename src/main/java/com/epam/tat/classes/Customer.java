@@ -11,9 +11,6 @@ public class Customer {
 	private BigInteger creditCard;
 	private BigInteger bankAccount;
 
-	public Customer() {
-	}
-
 	public Customer(String id, String firstName, String secondName, String lastName, String adress,
 			BigInteger creditCard, BigInteger bankAccount) {
 		this.id = id;

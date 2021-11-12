@@ -14,9 +14,6 @@ public class Student {
 	private String course;
 	private String group;
 
-	public Student() {
-	}
-
 	public Student(String id, String firstName, String secondName, String lastName, Date birthday, String adress,
 			String phone, String faculty, String course, String group) {
 		this.id = id;
